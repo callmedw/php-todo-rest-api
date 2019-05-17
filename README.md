@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="public/images/php-rest.jpg" alt="API pic from https://www.madebymagnitude.com/blog/creating-a-restful-api-with-php-using-slim/" width="600px">
+  <img src="public/images/php-rest.jpg" alt="API pic from  https://www.madebymagnitude.com/blog/creating-a-restful-api-with-php-using-slim/" width="600px">
 </h1>
 
 <h4 align="center">
@@ -11,10 +11,10 @@
     <img src="https://img.shields.io/badge/License-MIT-green.svg?style=popout"
     alt="MIT-license-badge">
   </a>
-  <img src="https://img.shields.io/github/languages/code-size/callmedw/https://github.com/callmedw/php-todo-rest-api.svg?style=popout"
+  <img src="https://img.shields.io/github/languages/code-size/callmedw/php-todo-rest-api.svg?style=popout"
   alt="code-size-badge">
-  <a href="https://GitHub.com/callmedw/https://github.com/callmedw/php-todo-rest-api/issues/">
-    <img src="https://img.shields.io/github/issues/callmedw/https://github.com/callmedw/php-todo-rest-api.svg?style=popout"
+  <a href="https://GitHub.com/callmedw/php-todo-rest-api/issues/">
+    <img src="https://img.shields.io/github/issues/callmedw/php-todo-rest-api.svg?style=popout"
     alt="github-issues-badge">
   </a>
 </p>
