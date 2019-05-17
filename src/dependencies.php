@@ -19,4 +19,20 @@ return function (App $app) {
         $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
         return $logger;
     };
+
+    // api
+    $container['api'] = function($c) {
+        $api = $c->get('settings')['api'];
+        $api['api_url'] = $api['base_url'].'/api/'.$api['version'];
+        return $api;
+    };
+
+      // db
+    $container['db'] = function($c) {
+        $db = $c->get('settings')['db'];
+        $pdo = new PDO($db['dsn'].':'.$db['database']);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        return $pdo;
+    };
 };
