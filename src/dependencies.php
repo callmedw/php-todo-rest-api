@@ -35,4 +35,10 @@ return function (App $app) {
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
   };
+
+  // classes
+  $container['todo'] = function($c) {
+    return new Todo($c->get('db'));
+    // return new App\Models\Todo($c->get('db'));
+  };
 };
