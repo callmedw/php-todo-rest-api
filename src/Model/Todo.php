@@ -1,7 +1,8 @@
 <?php
 namespace App\Model;
 
-class Todo {
+
+class ToDo {
   protected $database;
 
   public function __construct(\PDO $database) {

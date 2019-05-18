@@ -1,7 +1,8 @@
 <?php
 
 use Slim\App;
-use App\Model\Todo;
+use App\Model\ToDo;
+
 
 return function (App $app) {
   $container = $app->getContainer();
@@ -39,6 +40,6 @@ return function (App $app) {
 
   // classes
   $container['todo'] = function($c) {
-    return new Todo($c->get('db'));
+    return new ToDo($c->get('db'));
   };
 };
