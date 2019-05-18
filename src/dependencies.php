@@ -39,6 +39,5 @@ return function (App $app) {
   // classes
   $container['todo'] = function($c) {
     return new Todo($c->get('db'));
-    // return new App\Models\Todo($c->get('db'));
   };
 };

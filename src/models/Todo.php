@@ -1,5 +1,4 @@
 <?php
-namespace  App\Model;
 
 class Todo {
   protected $database;
@@ -8,7 +7,7 @@ class Todo {
     $this->database = $database;
   }
 
-  public function getCourses() {
+  public function getTasks() {
     $statement = $this->database->prepare(
       'SELECT * FROM tasks ORDER BY id'
     );
