@@ -35,14 +35,14 @@ class ToDo {
   }
 
   public function createTask($data) {
-    if (empty($data['title']) || empty($data['url'])) {
+    if (empty($data['name']) || empty($data['status'])) {
       throw new ApiException(ApiException::TASK_INFO_REQUIRED);
     }
     $statement = $this->database->prepare(
-    'INSERT INTO tasks(title, url) VALUES(:title, :url)'
+    'INSERT INTO tasks(name, status) VALUES(:name, :status)'
     );
-    $statement->bindParam('title', $data['title']);
-    $statement->bindParam('url', $data['url']);
+    $statement->bindParam('name', $data['name']);
+    $statement->bindParam('status', $data['status']);
     $statement->execute();
     if ($statement->rowCount()<1) {
       throw new ApiException(ApiException::TASK_CREATION_FAILED);
@@ -51,14 +51,14 @@ class ToDo {
   }
 
   public function updateTask($data) {
-    if (empty($data['task_id']) || empty($data['title']) || empty($data['url'])) {
+    if (empty($data['task_id']) || empty($data['name']) || empty($data['status'])) {
       throw new ApiException(ApiException::TASK_INFO_REQUIRED);
     }
     $statement = $this->database->prepare(
-    'UPDATE tasks SET title=:title, url=:url WHERE id=:id'
+    'UPDATE tasks SET name=:name, status=:status WHERE id=:id'
     );
-    $statement->bindParam('title', $data['title']);
-    $statement->bindParam('url', $data['url']);
+    $statement->bindParam('name', $data['name']);
+    $statement->bindParam('status', $data['status']);
     $statement->bindParam('id', $data['task_id']);
     $statement->execute();
     if ($statement->rowCount()<1) {
