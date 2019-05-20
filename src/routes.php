@@ -7,8 +7,45 @@ use Slim\Http\Response;
 return function (App $app) {
   $container = $app->getContainer();
 
-  $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    $result = $this->todo->getTasks();
+  $app->get('/', function (Request $request, Response $response, array $args) {
+
+    $endpoints = [
+      'all todos' => $this->api['api_url'].'/todos',
+      'single todo' => $this->api['api_url'].'/todos/{todo_id}',
+    ];
+    $result = [
+      'endpoints' => $endpoints,
+      'version' => $this->api['version'],
+      'timestamp' => time(),
+    ];
     return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+    
+  });
+
+  $app->group('/api/v1/todos', function() use($app)  {
+
+    $app->get('', function (Request $request, Response $response, array $args) {
+      $result = $this->task->getTasks();
+      return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+    });
+    $app->get('/{todo_id}', function (Request $request, Response $response, array $args) {
+      $result = $this->task->getTask($args['task_id']);
+      return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+    });
+    $app->post('', function (Request $request, Response $response, array $args) {
+      $result = $this->task->createTask($request->getParsedBody());
+      return $response->withJson($result, 201, JSON_PRETTY_PRINT);
+    });
+    $app->put('/{todo_id}', function (Request $request, Response $response, array $args) {
+      $data = $request->getParsedBody();
+      $data['todo_id'] = $args['task_id'];
+      $result = $this->task->updateTask($data);
+      return $response->withJson($result, 201, JSON_PRETTY_PRINT);
+    });
+    $app->delete('/{todo_id}', function (Request $request, Response $response, array $args) {
+      $result = $this->task->deleteTask($args['task_id']);
+      return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+    });
+
   });
 };
