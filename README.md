@@ -37,7 +37,7 @@
 To pass this code review with a Meets Expectations the following criteria are required:
 * This API is versioned, all routes should be prefixed with **/api/v1**
 
-- [ ] Build Task model
+- [x] Build Task/ToDo? model
   * Model stores id, name, and status.
 
 - [ ] Build Todo DAO Implementation that uses Sql2o
