@@ -19,7 +19,7 @@ return function (App $app) {
       'timestamp' => time(),
     ];
     return $response->withJson($result, 200, JSON_PRETTY_PRINT);
-    
+
   });
 
   $app->group('/api/v1/todos', function() use($app)  {
@@ -29,7 +29,7 @@ return function (App $app) {
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
     });
     $app->get('/{todo_id}', function (Request $request, Response $response, array $args) {
-      $result = $this->task->getTask($args['task_id']);
+      $result = $this->task->getTask($args['todo_id']);
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
     });
     $app->post('', function (Request $request, Response $response, array $args) {
@@ -38,12 +38,12 @@ return function (App $app) {
     });
     $app->put('/{todo_id}', function (Request $request, Response $response, array $args) {
       $data = $request->getParsedBody();
-      $data['todo_id'] = $args['task_id'];
+      $data['todo_id'] = $args['todo_id'];
       $result = $this->task->updateTask($data);
       return $response->withJson($result, 201, JSON_PRETTY_PRINT);
     });
     $app->delete('/{todo_id}', function (Request $request, Response $response, array $args) {
-      $result = $this->task->deleteTask($args['task_id']);
+      $result = $this->task->deleteTask($args['todo_id']);
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
     });
 

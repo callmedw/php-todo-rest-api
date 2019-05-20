@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
+use App\Exception\ApiException;
 
 class Task {
   protected $database;

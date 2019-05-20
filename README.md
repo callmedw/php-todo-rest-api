@@ -37,13 +37,13 @@
 To pass this code review with a Meets Expectations the following criteria are required:
 * This API is versioned, all routes should be prefixed with **/api/v1**
 
-- [x] Build Task/ToDo? model
+- [x] Build Task model
   * Model stores id, name, and status.
 
 - [ ] Build Todo DAO Implementation that uses Sql2o
   * Task model implements all methods to interface with the Todo database.
 
-- [ ] Fetch Todos
+- [x] Fetch Todos
   * **GET /api/v1/todos** returns all todos and populates the web application.
 
 - [ ] Create a New Todo
