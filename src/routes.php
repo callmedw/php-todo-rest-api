@@ -28,20 +28,24 @@ return function (App $app) {
       $result = $this->task->getTasks();
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
     });
+
     $app->get('/{todo_id}', function (Request $request, Response $response, array $args) {
       $result = $this->task->getTask($args['todo_id']);
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
     });
+
     $app->post('', function (Request $request, Response $response, array $args) {
       $result = $this->task->createTask($request->getParsedBody());
       return $response->withJson($result, 201, JSON_PRETTY_PRINT);
     });
+
     $app->put('/{todo_id}', function (Request $request, Response $response, array $args) {
       $data = $request->getParsedBody();
       $data['todo_id'] = $args['todo_id'];
       $result = $this->task->updateTask($data);
       return $response->withJson($result, 201, JSON_PRETTY_PRINT);
     });
+
     $app->delete('/{todo_id}', function (Request $request, Response $response, array $args) {
       $result = $this->task->deleteTask($args['todo_id']);
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
