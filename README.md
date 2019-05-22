@@ -46,7 +46,7 @@ To pass this code review with a Meets Expectations the following criteria are re
 - [x] Fetch Todos
   * **GET /api/v1/todos** returns all todos and populates the web application.
 
-- [ ] Create a New Todo
+- [x] Create a New Todo
   * **POST /api/v1/todos** creates a new Todo, returns it and sets the appropriate status code.
 
 - [ ] Update an existing Todo
