@@ -41,21 +41,20 @@ return function (App $app) {
 
     $app->put('/{todo_id}', function (Request $request, Response $response, array $args) {
       $data = $request->getParsedBody();
-      $data['todo_id'] = $args['todo_id'];
+      $data['id'] = $args['todo_id'];
+      error_log(print_r($data, true));
       $result = $this->task->updateTask($data);
       return $response->withJson($result, 201, JSON_PRETTY_PRINT);
     });
 
     $app->delete('/{todo_id}', function (Request $request, Response $response, array $args) {
-      error_log($args['id']);
-      error_log($args['todo_id']);
       $result = $this->task->deleteTask($args['todo_id']);
       return $response->withJson($result, 200, JSON_PRETTY_PRINT);
     });
   });
 
-    $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
-      $handler = $this->notFoundHandler;
-      return $handler($req, $res);
-    });
+  $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
+    $handler = $this->notFoundHandler;
+    return $handler($req, $res);
+  });
 };

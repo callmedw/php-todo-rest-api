@@ -49,10 +49,10 @@ To pass this code review with a Meets Expectations the following criteria are re
 - [x] Create a New Todo
   * **POST /api/v1/todos** creates a new Todo, returns it and sets the appropriate status code.
 
-- [ ] Update an existing Todo
+- [x] Update an existing Todo
   * **PUT /api/v1/todos/{id}** is handled and proper Todo is updated.
 
-- [ ] Delete an existing Todo
+- [x] Delete an existing Todo
   * **DELETE /api/v1/todos/{id}** deletes the appropriate Todo sends back the appropriate status code and an empty body.
 
 ## Required Technologies
